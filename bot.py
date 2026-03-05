@@ -15,7 +15,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
 
-# ---------------- Storage ----------------
+# ---------------- Storage ---------------
 DATA_DIR = Path("./data")
 DATA_DIR.mkdir(exist_ok=True)
 
@@ -365,7 +365,7 @@ async def reminder(call: CallbackQuery, state: FSMContext):
     await state.set_state(Screens.reminder_time)
     await call.message.edit_text(
         f"⏰ Напоминание\n\nТекущее время: {cur}\n"
-        "Отправьте время в формате HH:MM (например 20:30).\n"
+        "Отправьте время в формате HH:MM (например 20:30) по Нидерландскому времени.\n"
         "Или напишите 0 чтобы выключить.",
         reply_markup=kb_back("main:menu"),
     )
@@ -467,4 +467,5 @@ async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
+
     asyncio.run(main())
